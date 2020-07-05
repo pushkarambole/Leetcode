@@ -1,0 +1,50 @@
+//Design Hashmap
+        static void Main(string[] args)
+        {
+            MyHashMap hashMap = new MyHashMap();
+            hashMap.Put(1, 1);
+            hashMap.Get(1);
+        }
+        
+    public class MyHashMap
+    {
+        public int[] map { get; set; }
+        /** Initialize your data structure here. */
+        public MyHashMap()
+        {
+            map = new int[1000000];
+            /*
+            for(int j=0;j<map.Length;j++)
+            {
+                map[j]=-1;
+            }
+            */
+            Array.Fill(map, -1);
+        }
+
+        /** value will always be non-negative. */
+        public void Put(int key, int value)
+        {
+            map[key] = value;
+        }
+
+        /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+        public int Get(int key)
+        {
+            int value = 0;
+            value = map[key];
+            if (value > -1)
+                return value;
+            else
+                return -1;
+        }
+
+        /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+        public void Remove(int key)
+        {
+            int value = 0;
+            value = map[key];
+            if (value != -1)
+                map[key] = -1;
+        }
+    }
