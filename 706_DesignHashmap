@@ -1,4 +1,4 @@
-//Difficulty: Easy
+//Difficulty:Easy
         static void Main(string[] args)
         {
             MyHashMap hashMap = new MyHashMap();
