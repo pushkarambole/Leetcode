@@ -5,7 +5,6 @@
             hashMap.Put(1, 1);
             hashMap.Get(1);
         }
-        
     public class MyHashMap
     {
         public int[] map { get; set; }
