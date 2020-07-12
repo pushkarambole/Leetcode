@@ -1,3 +1,5 @@
+//Difficulty:Easy
+
 public class Solution {
     public double FindMedianSortedArrays(int[] nums1, int[] nums2) {
                     List<int> termsList = new List<int>();
