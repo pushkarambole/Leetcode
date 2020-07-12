@@ -23,7 +23,6 @@ public class Solution {
             else
             {
                 median = ((termsList[count / 2])/1.0);
-                
             }
         return median;
     }
