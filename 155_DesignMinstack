@@ -13,3 +13,36 @@
             int z = minStack.GetMin(); // return -2
             Console.WriteLine(z);
         }
+            public class MinStack
+    {
+
+        /** initialize your data structure here. */
+        public List<int> stack { get; set; }
+        public MinStack()
+        {
+            stack = new List<int>();
+        }
+
+        public void Push(int x)
+        {
+            stack.Add(x);
+        }
+
+        public void Pop()
+        {
+            stack.RemoveAt(stack.Count - 1);
+        }
+
+        public int Top()
+        {
+            int element = stack[stack.Count - 1];
+            return element;
+        }
+
+        public int GetMin()
+        {
+            int minimum = stack.Min();
+
+            return minimum;
+        }
+    }
