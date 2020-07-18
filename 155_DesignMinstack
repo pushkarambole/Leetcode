@@ -1,1 +1,15 @@
 
+        static void Main(string[] args)
+        {
+            MinStack minStack = new MinStack();
+            minStack.Push(-2);
+            minStack.Push(0);
+            minStack.Push(-3);
+            int x = minStack.GetMin(); // return -3
+            Console.WriteLine(x);
+            minStack.Pop();
+            int y = minStack.Top();    // return 0
+            Console.WriteLine(y);
+            int z = minStack.GetMin(); // return -2
+            Console.WriteLine(z);
+        }
