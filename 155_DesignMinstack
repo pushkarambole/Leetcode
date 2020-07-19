@@ -1,4 +1,4 @@
-
+Difficulty: Medium
         static void Main(string[] args)
         {
             MinStack minStack = new MinStack();
