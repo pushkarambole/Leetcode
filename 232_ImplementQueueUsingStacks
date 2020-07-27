@@ -1,0 +1,58 @@
+//Difficulty:Medium
+
+        static void Main(string[] args)
+        {
+            MyQueue queue = new MyQueue();
+            queue.Push(1);
+            queue.Push(2);
+            int x = queue.Peek();  // returns 1
+            //Console.WriteLine(x);
+            int y = queue.Pop();   // returns 1
+            //Console.WriteLine(y);
+            bool z = queue.Empty(); // returns false
+            Console.WriteLine(z);
+        }
+        
+            public class MyQueue
+    {
+        public List<int> queue { get; set; }
+        /** Initialize your data structure here. */
+        public MyQueue()
+        {
+            queue = new List<int>();
+        }
+
+        /** Push element x to the back of queue. */
+        public void Push(int x)
+        {
+            queue.Add(x);
+        }
+
+        /** Removes the element from in front of queue and returns that element. */
+        public int Pop()
+        {
+            int element = queue[0];
+            queue.RemoveAt(0);
+            return element;
+        }
+
+        /** Get the front element. */
+        public int Peek()
+        {
+            int element = queue[0];
+            return element;
+        }
+
+        /** Returns whether the queue is empty. */
+        public bool Empty()
+        {
+            if (queue.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
