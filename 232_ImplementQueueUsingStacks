@@ -13,7 +13,7 @@
             Console.WriteLine(z);
         }
         
-            public class MyQueue
+    public class MyQueue
     {
         public List<int> queue { get; set; }
         /** Initialize your data structure here. */
