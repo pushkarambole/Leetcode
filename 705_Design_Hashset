@@ -15,3 +15,36 @@
             Console.WriteLine(xy);
 
         }
+
+    public class MyHashSet
+    {
+        public List<int> HashSet { get; set; }
+        /** Initialize your data structure here. */
+        public MyHashSet()
+        {
+            HashSet = new List<int>();
+        }
+
+        public void Add(int key)
+        {
+            HashSet.Add(key);
+        }
+
+        public void Remove(int key)
+        {
+            HashSet.RemoveAll(item => item == key);
+        }
+
+        /** Returns true if this set contains the specified element */
+        public bool Contains(int key)
+        {
+            if (HashSet.Contains(key))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
