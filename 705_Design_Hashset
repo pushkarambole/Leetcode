@@ -1,0 +1,17 @@
+        static void Main(string[] args)
+        {
+            MyHashSet hashSet = new MyHashSet();
+            hashSet.Add(1);
+            hashSet.Add(2);
+            bool x = hashSet.Contains(1);    // returns true
+            Console.WriteLine(x);
+            bool y = hashSet.Contains(3);    // returns false (not found)
+            Console.WriteLine(y);
+            hashSet.Add(2);
+            bool z = hashSet.Contains(2);    // returns true
+            Console.WriteLine(z);
+            hashSet.Remove(2);
+            bool xy = hashSet.Contains(2);    // returns false (already removed)
+            Console.WriteLine(xy);
+
+        }
