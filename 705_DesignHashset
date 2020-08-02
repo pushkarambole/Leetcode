@@ -1,3 +1,5 @@
+        //Difficulty: Medium
+        
         static void Main(string[] args)
         {
             MyHashSet hashSet = new MyHashSet();
