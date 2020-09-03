@@ -1,0 +1,38 @@
+        Difficulty: Medium
+        
+        static void Main(string[] args)
+        {
+            int[] nums = { 8 };
+            int target = 8;
+            SearchArray objSearchArray = new SearchArray();
+            int[] numsResult = objSearchArray.SearchRange(nums, target);
+            foreach (int number in numsResult)
+            {
+                Console.WriteLine(number);
+            }
+            //retValue = objRotatedArray.Search(nums, target);
+            //Console.WriteLine(retValue);
+        }
+        
+            public class RotatedArray
+    {
+        public int Search(int[] nums, int target)
+        {
+            int index = -1;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == target)
+                {
+                    index = i;
+                    break;
+                }
+                //else
+                //{
+                //    index = -1;
+                //}
+
+            }
+            return index;
+        }
+    }
+        
