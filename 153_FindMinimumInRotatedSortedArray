@@ -1,0 +1,28 @@
+        //Difficulty: Medium
+        
+        static void Main(string[] args)
+        {
+            int[] numArray = { 3, 4, 5, 1, 2 };
+            MinArray objMinArray = new MinArray();
+            int result = objMinArray.FindMin(numArray);
+            Console.WriteLine(result);
+        }
+        
+            public class MinArray
+    {
+        public int FindMin(int[] nums)
+        {
+            List<int> numsList = new List<int>();
+            int result;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                numsList.Add(nums[i]);
+            }
+            numsList.Sort();
+            result = numsList[0];
+            return result;
+        }
+    }
+        
+        
+        
