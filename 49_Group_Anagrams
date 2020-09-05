@@ -1,0 +1,40 @@
+Difficulty: Medium 
+
+        static void Main(string[] args)
+        {
+            //string[] numArray = { "eat", "tea", "tan", "ate", "nat", "bat" };
+            string[] numArray = { "compilations", "complainants" };
+            //string[] numArray = { "hos","boo","nay","deb","wow","bop","bob","brr","hey","rye","eve","elf","pup","bum","iva","lyx","yap","ugh","hem","rod","aha","nam","gap","yea","doc","pen","job","dis","max","oho","jed","lye","ram","pup","qua","ugh","mir","nap","deb","hog","let","gym","bye","lon","aft","eel","sol","jab"};
+            //string[] numArray = { "c", "c" };
+            PeakElement objMinArray = new PeakElement();
+            IList<IList<string>> result = objMinArray.GroupAnagrams(numArray);
+            foreach (List<string> subList in result)
+            {
+                foreach (string item in subList)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            // Console.WriteLine(result);
+        }
+        
+            public class PeakElement
+    {
+        public int FindPeakElement(int[] nums)
+        {
+            int result = 0;
+            int maxValue = 0;
+            List<int> numsList = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                numsList.Add(nums[i]);
+            }
+            foreach (int j in numsList)
+            {
+                Console.WriteLine(j);
+            }
+            maxValue = numsList.Max();
+            result = numsList.FindIndex(item => item == maxValue);
+            return result;
+        }
+    }
