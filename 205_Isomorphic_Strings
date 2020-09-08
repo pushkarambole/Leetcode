@@ -1,0 +1,28 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            string s = "egg";
+            string t = "add";
+            Isomorphic objIsomorphic = new Isomorphic();
+            bool result = objIsomorphic.IsIsomorphic(s, t);
+            Console.WriteLine(s.IndexOf('g'));
+            Console.WriteLine(result);
+        }
+        
+            public class Isomorphic
+    {
+        public bool IsIsomorphic(string s, string t)
+        {
+            List<char> firstWord = new List<char>();
+            List<char> secondWord = new List<char>();
+
+            Dictionary<char, char> dict = new Dictionary<char, char>();
+            for (int i = 0; i < s.Length; i++)
+                if (dict.ContainsKey(s[i]) && dict[s[i]] != t[i]) return false;
+                else if (!dict.ContainsKey(s[i]) && dict.ContainsValue(t[i])) return false;
+                else if (!dict.ContainsKey(s[i]) && !dict.ContainsValue(s[i])) dict.Add(s[i], t[i]);
+            return true;
+        }
+    }
+
