@@ -1,0 +1,52 @@
+       // Difficulty: Medium
+        static void Main(string[] args)
+        {
+            string s = "";
+            string t = "aa";
+            Pattern objPattern = new Pattern();
+            bool result = objPattern.WordPattern(s, t);
+            Console.WriteLine(result);
+        }
+        
+            public class Pattern
+    {
+        public bool WordPattern(string pattern, string str)
+        {
+            Dictionary<char, string> dict = new Dictionary<char, string>();
+            List<char> patterList = new List<char>();
+            // List<string> stringList = new List<string>();
+            foreach (char word in pattern)
+            {
+                patterList.Add(word);
+            }
+            List<string> stringList = str.Split(" ").ToList<string>();
+            if (patterList.Count() != stringList.Count())
+            {
+                return false;
+            }
+            for (int i = 0; i < patterList.Count(); i++)
+            {
+                for (int j = 0; j < stringList.Count(); j++)
+                {
+                    if (i == j)
+                    {
+                        if (dict.ContainsKey(patterList[i]) && dict[patterList[i]] != stringList[j])
+                        {
+                            return false;
+                        }
+                        else if (!dict.ContainsKey(patterList[i]) && !dict.ContainsValue(stringList[j]))
+                        {
+                            dict.Add(patterList[i], stringList[j]);
+                        }
+                        else if (!dict.ContainsKey(patterList[i]) && dict.ContainsValue(stringList[j]))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+    }
+        
+        
