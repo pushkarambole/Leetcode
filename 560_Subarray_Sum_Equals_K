@@ -1,0 +1,35 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            int[] nums = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            int k = 0;
+            SubArray objSubArray = new SubArray();
+            int result = objSubArray.SubarraySum(nums, k);
+            Console.WriteLine(result);
+        }
+        
+            public class SubArray
+    {
+        public int SubarraySum(int[] nums, int k)
+        {
+            Dictionary<int, int> sumCount = new Dictionary<int, int>();
+            int result = 0;
+            int sum = 0;
+            sumCount.Add(0, 1);
+            foreach (int n in nums)
+            {
+                // compute sum at each index
+                sum += n;
+                // if (current sum - k) exists in dictionary then it means we have sum equal to k between two indices
+                if (sumCount.ContainsKey(sum - k))
+                    result += sumCount[sum - k];
+                // add current sum to dic if it already exists increment count else add new with count set to 1
+                if (sumCount.ContainsKey(sum))
+                    sumCount[sum] += 1;
+                else
+                    sumCount.Add(sum, 1);
+            }
+            return result;
+        }
+    }
