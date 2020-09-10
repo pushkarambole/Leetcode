@@ -1,0 +1,39 @@
+       //Difficulty: Medium
+       static void Main(string[] args)
+        {
+            int[] nums = { 1, 0, 1, 0, 1, 1 };
+            SubArrayContiguous objSubArrayContiguous = new SubArrayContiguous();
+            int result = objSubArrayContiguous.SubarraySumContiguous(nums);
+            Console.WriteLine(result);
+        }
+        
+            public class SubArrayContiguous
+    {
+        public int SubarraySumContiguous(int[] nums)
+        {
+            int result = 0;
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            int count = 0;
+            dict.Add(0, -1);
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 1)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+                if (dict.ContainsKey(count))
+                {
+                    result = Math.Max(result, i - dict[count]);
+                }
+                else
+                {
+                    dict.Add(count, i);
+                }
+            }
+            return result;
+        }
+    }
