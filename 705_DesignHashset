@@ -1,0 +1,52 @@
+        //Difficulty: Medium
+        
+        static void Main(string[] args)
+        {
+            MyHashSet hashSet = new MyHashSet();
+            hashSet.Add(1);
+            hashSet.Add(2);
+            bool x = hashSet.Contains(1);    // returns true
+            Console.WriteLine(x);
+            bool y = hashSet.Contains(3);    // returns false (not found)
+            Console.WriteLine(y);
+            hashSet.Add(2);
+            bool z = hashSet.Contains(2);    // returns true
+            Console.WriteLine(z);
+            hashSet.Remove(2);
+            bool xy = hashSet.Contains(2);    // returns false (already removed)
+            Console.WriteLine(xy);
+
+        }
+
+    public class MyHashSet
+    {
+        public List<int> HashSet { get; set; }
+        /** Initialize your data structure here. */
+        public MyHashSet()
+        {
+            HashSet = new List<int>();
+        }
+
+        public void Add(int key)
+        {
+            HashSet.Add(key);
+        }
+
+        public void Remove(int key)
+        {
+            HashSet.RemoveAll(item => item == key);
+        }
+
+        /** Returns true if this set contains the specified element */
+        public bool Contains(int key)
+        {
+            if (HashSet.Contains(key))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
