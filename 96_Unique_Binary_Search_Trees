@@ -1,0 +1,36 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            BinarySearchCountTrees trees = new BinarySearchCountTrees();
+            int ret = 0;
+            ret = trees.NumTrees(3);
+            Console.WriteLine(ret);
+        }
+        
+            public class BinarySearchCountTrees
+    {
+        int ans = 0;
+        int sum = 0;
+        public int NumTrees(int n)
+        {
+            ans = FindCount(n);
+            return ans;
+        }
+        public int FindCount(int n)
+        {
+            int[] catArray = new int[n + 2];
+            catArray[0] = 1;
+            catArray[1] = 1;
+
+            for (int i = 2; i <= n; i++)
+            {
+                catArray[i] = 0;
+                for (int j = 0; j < i; j++)
+                {
+                    catArray[i] += catArray[j] * catArray[i - j - 1];
+                }
+            }
+            return catArray[n];
+        }
+    }
