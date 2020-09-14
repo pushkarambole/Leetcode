@@ -1,0 +1,38 @@
+Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            MinimumParantheses MinimumParanthesesobj = new MinimumParantheses();
+            int ret = 0;
+            ret = MinimumParanthesesobj.MinAddToMakeValid("()))((");
+            Console.WriteLine(ret);
+        }
+        
+            public class MinimumParantheses
+    {
+        public int MinAddToMakeValid(string S)
+        {
+            int ans = 0;
+            int countL = 0, countR = 0;
+            Stack<char> st = new Stack<char>();
+            foreach (char x in S)
+            {
+                if (x == '(')
+                {
+                    st.Push(x);
+                }
+                if (x == ')')
+                {
+                    if (st.Count == 0)
+                    {
+                        ans = ans + 1;
+                    }
+                    else
+                    {
+                        st.Pop();
+                    }
+                }
+            }
+            return ans + st.Count;
+        }
+    }
