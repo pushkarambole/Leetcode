@@ -1,0 +1,54 @@
+//Difficulty: Medium
+
+        static void main(string[] args)
+        {
+            classdiffwaystocompute classdiffwaystocomputeobj = new classdiffwaystocompute();
+            ilist<int> ret = new list<int>();
+            ret = classdiffwaystocomputeobj.diffwaystocompute("2-1-1");
+            foreach (int item in ret)
+            {
+                console.writeline(item);
+            }
+        }
+        
+            public class ClassDiffWaysToCompute
+    {
+        public IList<int> DiffWaysToCompute(string input)
+        {
+            IList<int> ans = new List<int>();
+            bool flagForDigit = true;
+            for (int i = 0; i < input.Length; i++)
+            {
+                var character = input[i];
+                if (character == '+' || character == '*' || character == '-')
+                {
+                    flagForDigit = false;
+                    var leftPart = DiffWaysToCompute(input.Substring(0, i));
+                    var rightPart = DiffWaysToCompute(input.Substring(i + 1));
+                    foreach (int x in leftPart)
+                    {
+                        foreach (int y in rightPart)
+                        {
+                            if (character == '+')
+                            {
+                                ans.Add(x + y);
+                            }
+                            else if (character == '*')
+                            {
+                                ans.Add(x * y);
+                            }
+                            else if (character == '-')
+                            {
+                                ans.Add(x - y);
+                            }
+                        }
+                    }
+                }
+            }
+            if (flagForDigit)
+            {
+                ans.Add(Convert.ToInt32(input));
+            }
+            return ans;
+        }
+    }
