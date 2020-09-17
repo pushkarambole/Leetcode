@@ -1,0 +1,46 @@
+Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            string s = "";
+            string p = "";
+            ClassFindDuplicate objClassFindDuplicate = new ClassFindDuplicate();
+            int[] arr = { 1, 1, 3, 5, 7 };
+            Console.WriteLine(objClassFindDuplicate.FindDuplicate(arr));
+        }
+        
+            public class ClassFindDuplicate
+    {
+        public int FindDuplicate(int[] nums)
+        {
+            int ans = 0;
+            List<int> converted = new List<int>();
+            foreach (int x in nums)
+            {
+                converted.Add(x);
+            }
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            foreach (int x in converted)
+            {
+                if (dict.ContainsKey(x))
+                {
+                    var val = dict[x];
+                    dict[x] = val + 1;
+                    //dict.Remove(x);
+                    //dict.Add(x, val + 1);
+                }
+                else
+                {
+                    dict.Add(x, 1);
+                }
+            }
+            foreach (KeyValuePair<int, int> kvp in dict)
+            {
+                if (kvp.Value > 1)
+                {
+                    ans = kvp.Key;
+                    break;
+                }
+            }
+            return ans;
+        }
