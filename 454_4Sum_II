@@ -1,0 +1,52 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            string s = "";
+            string p = "";
+            ClassFourSumCount objClassFourSumCount = new ClassFourSumCount();
+            int[] arr1 = { 1, 2 };
+            int[] arr2 = { -2, -1 };
+            int[] arr3 = { -1, 2 };
+            int[] arr4 = { 0, 2 };
+            Console.WriteLine(objClassFourSumCount.FourSumCount(arr1, arr2, arr3, arr4));
+        }
+        
+            public class ClassFourSumCount
+    {
+        public int FourSumCount(int[] A, int[] B, int[] C, int[] D)
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            int count = 0;
+            foreach (int x in A)
+            {
+                foreach (int y in B)
+                {
+                    int sum1 = x + y;
+                    if (dict.ContainsKey(sum1))
+                    {
+                        int val = dict[sum1];
+                        dict[sum1] = val + 1;
+                    }
+                    else
+                    {
+                        dict.Add(sum1, 1);
+                    }
+                }
+            }
+            foreach (int x in C)
+            {
+                foreach (int y in D)
+                {
+                    int sum2 = -1 * (x + y);
+                    if (dict.ContainsKey(sum2))
+                    {
+                        count = count + dict[sum2];
+                    }
+                }
+            }
+            return count;
+        }
+    }
+        
+        
