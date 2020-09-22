@@ -1,0 +1,79 @@
+        Difficulty: Medium
+        
+        static void Main(string[] args)
+        {
+            IList<IList<int>> ret = new List<IList<int>>();
+            ClassFourSum objClassFourSum = new ClassFourSum();
+            int[] arr = { 1, 0, -1, 0, -2, 2 };
+            int target = 0;
+            ret = objClassFourSum.FourSum(arr, target);
+            foreach (List<int> x in ret)
+            {
+                foreach (int y in x)
+                {
+                    Console.WriteLine(y);
+                }
+            }
+        }
+        
+            public class ClassFourSum
+    {
+        public IList<IList<int>> FourSum(int[] nums, int target)
+        {
+            IList<IList<int>> ans = new List<IList<int>>();
+            List<int> numsList = new List<int>();
+            foreach (int num in nums)
+            {
+                numsList.Add(num);
+            }
+            numsList.Sort();
+            int lenArray = numsList.Count();
+            if (lenArray < 4)
+            {
+                return ans;
+            }
+            for (int i = 0; i < lenArray - 3; i++)
+            {
+                for (int j = i + 1; j < lenArray - 2; j++)
+                {
+                    int low = j + 1;
+                    int high = lenArray - 1;
+                    while (low < high)
+                    {
+                        int sum = numsList[i] + numsList[j] + numsList[low] + numsList[high];
+                        if (sum == target)
+                        {
+                            ans.Add(new List<int> { numsList[i], numsList[j], numsList[low], numsList[high] });
+                            while (i < lenArray - 3 && numsList[i] == numsList[i + 1])
+                            {
+                                i++;
+                            }
+                            while (j < lenArray - 2 && numsList[j] == numsList[j + 1])
+                            {
+                                j++;
+                            }
+                            while (low < high && numsList[low] == numsList[low + 1])
+                            {
+                                low++;
+                            }
+                            while (low < high && numsList[high] == numsList[high - 1])
+                            {
+                                high--;
+                            }
+                            low++;
+                            high--;
+                        }
+                        else if (sum < target)
+                        {
+                            low++;
+                        }
+                        else
+                        {
+                            high--;
+                        }
+                    }
+                }
+            }
+            return ans;
+        }
+    }
