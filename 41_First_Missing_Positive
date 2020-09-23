@@ -1,0 +1,41 @@
+//Difficulty: Medium
+        static void Main(string[] args)
+        {
+            int ret = 0;
+            ClassFirstMissingPositive objClassFirstMissingPositive = new ClassFirstMissingPositive();
+            int[] arr = { 1, 2, 0 };
+            ret = objClassFirstMissingPositive.FirstMissingPositive(arr);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassFirstMissingPositive
+    {
+        public int FirstMissingPositive(int[] nums)
+        {
+            List<int> reqdList = new List<int>();
+            foreach (int x in nums)
+            {
+                if (x > 0)
+                {
+                    reqdList.Add(x);
+                }
+            }
+            if (reqdList.Count == 0)
+            {
+                return 1;
+            }
+            int max = reqdList.Max();
+            int ans = max + 1;
+            int min = reqdList.Min();
+            bool flag = false;
+            for (int i = 1; i <= max; i++)
+            {
+                if (!reqdList.Contains(i))
+                {
+                    ans = i;
+                    break;
+                }
+            }
+            return ans;
+        }
+    }
