@@ -1,4 +1,4 @@
-//Difficulty: Medium
+//Difficulty: Hard
         static void Main(string[] args)
         {
             int ret = 0;
