@@ -1,0 +1,43 @@
+        //Difficulty: Medium
+        
+        static void Main(string[] args)
+        {
+            int ret = 0;
+            ClassHouseRobber2 objClassHouseRobber2 = new ClassHouseRobber2();
+            int[] arr = { 1, 2, 3, 1 };
+            ret = objClassHouseRobber2.Rob(arr);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassHouseRobber2
+    {
+        public int Rob(int[] nums)
+        {
+            if (nums.Length == 0)
+            {
+                return 0;
+            }
+            if (nums.Length == 1)
+            {
+                return nums[0];
+            }
+            int[] tempArr = new int[nums.Length + 1];
+            tempArr[0] = 0;
+            tempArr[1] = 0;
+            int currentSum = 0;
+            for (int i = 0; i < nums.Length - 1; i++)
+            {
+                currentSum = nums[i] + tempArr[i];
+                tempArr[i + 2] = Math.Max(currentSum, tempArr[i + 1]);
+            }
+            int[] tempArr2 = new int[nums.Length + 1];
+            tempArr2[0] = 0;
+            tempArr2[1] = 0;
+            for (int i = 1; i < nums.Length; i++)
+            {
+                currentSum = nums[i] + tempArr2[i - 1];
+                tempArr2[i + 1] = Math.Max(currentSum, tempArr2[i]);
+            }
+            return Math.Max(tempArr[tempArr.Length - 1], tempArr2[tempArr2.Length - 1]);
+        }
+    }
