@@ -1,0 +1,30 @@
+//Difficulty: Hard
+static void Main(string[] args)
+        {
+            ClassRegularExpressionMatching objClassRegularExpressionMatching = new ClassRegularExpressionMatching();
+            string s = "aa";
+            string p = "a";
+            bool ret = true;
+            ret = objClassRegularExpressionMatching.IsMatch(s, p);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassRegularExpressionMatching
+    {
+        public bool IsMatch(string s, string p)
+        {
+            if (string.IsNullOrEmpty(p))
+            {
+                return (string.IsNullOrEmpty(s));
+            }
+            bool firstPosition = (!string.IsNullOrEmpty(p) && (p[0] == s[0] || p[0] == '.'));
+            if (p.Length >= 2 && p[1] == '*')
+            {
+                return IsMatch(s, p.Substring(2)) || (firstPosition && IsMatch(s.Substring(1), p));
+            }
+            else
+            {
+                return IsMatch(s.Substring(1), p.Substring(1));
+            }
+        }
+    }
