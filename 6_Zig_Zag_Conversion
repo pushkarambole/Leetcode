@@ -1,0 +1,56 @@
+        //Difficulty: Medium
+        static void Main(string[] args)
+        {
+            ClassZigZagConvert objClassZigZagConvert = new ClassZigZagConvert();
+            string s = "PAYPALISHIRING";
+            string ret = objClassZigZagConvert.Convert(s, 3);
+            Console.WriteLine(ret);
+        }
+            public class ClassZigZagConvert
+    {
+        public string Convert(string s, int numRows)
+        {
+            string ans = "";
+            if (numRows <= 1)
+            {
+                return s;
+            }
+            List<char>[] rowLists = new List<char>[numRows];
+            int j = 0;
+            bool up = false;
+            foreach (char x in s)
+            {
+                if (rowLists[j] == null)
+                {
+                    rowLists[j] = new List<char>();
+                }
+                rowLists[j].Add(x);
+                if (up)
+                {
+                    j = j - 1;
+                }
+                else
+                {
+                    j = j + 1;
+                }
+                if (j == numRows)
+                {
+                    up = true;
+                    j = j - 2;
+                }
+                if (j == -1)
+                {
+                    up = false;
+                    j = j + 2;
+                }
+            }
+            foreach (List<char> x in rowLists)
+            {
+                foreach (char y in x)
+                {
+                    ans = ans + y;
+                }
+            }
+            return ans;
+        }
+    }
