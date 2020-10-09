@@ -1,0 +1,29 @@
+//Difficulty: Hard
+
+        static void Main(string[] args)
+        {
+            ClassJumpGame2 objClassJumpGame2 = new ClassJumpGame2();
+            int[] arr = { 2, 3, 1, 1, 4 };
+            int ret = objClassJumpGame2.Jump(arr);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassJumpGame2
+    {
+        public int Jump(int[] nums)
+        {
+            int r = 0;
+            int lr = 0;
+            int ans = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (i > lr)
+                {
+                    ans = ans + 1;
+                    lr = r;
+                }
+                r = Math.Max(r, nums[i] + i);
+            }
+            return ans;
+        }
+    }
