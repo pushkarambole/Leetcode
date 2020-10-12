@@ -1,0 +1,44 @@
+//Difficulty: Medium
+        static void Main(string[] args)
+        {
+            ClassJumpGame3 objClassJumpGame3 = new ClassJumpGame3();
+            int[] arr = { 4, 2, 3, 0, 3, 1, 2 };
+            bool ret = objClassJumpGame3.CanReach(arr, 5);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassJumpGame3
+    {
+        public bool CanReach(int[] arr, int start)
+        {
+            int arrEnd = arr.Length - 1;
+            int arrStart = 0;
+            bool[] visited = new bool[arr.Length];
+            Queue<int> q = new Queue<int>();
+            q.Enqueue(start);
+            visited[start] = true;
+            string s = "hello";
+            Console.Write(x);
+            while (q.Count > 0)
+            {
+                int index = q.Dequeue();
+                if (arr[index] == 0)
+                {
+                    return true;
+                }
+                int next = arr[index] + index;
+                if (next <= arrEnd && !visited[next])
+                {
+                    q.Enqueue(next);
+                    visited[next] = true;
+                }
+                int previous = index - arr[index];
+                if (previous >= 0 && !visited[previous])
+                {
+                    q.Enqueue(previous);
+                    visited[previous] = true;
+                }
+            }
+            return false;
+        }
+    }
