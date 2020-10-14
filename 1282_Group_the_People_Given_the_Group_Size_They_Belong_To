@@ -1,0 +1,51 @@
+//Difficulty: Medium
+        static void Main(string[] args)
+        {
+            ClassGroupProblem objClassGroupProblem = new ClassGroupProblem();
+            int[] arr = { 2, 1, 3, 3, 3, 2 };
+            IList<IList<int>> ret = objClassGroupProblem.GroupThePeople(arr);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassGroupProblem
+    {
+        public IList<IList<int>> GroupThePeople(int[] groupSizes)
+        {
+            IList<IList<int>> ans = new List<IList<int>>();
+            Dictionary<int, List<int>> dic = new Dictionary<int, List<int>>();
+            for (int i = 0; i < groupSizes.Length; i++)
+            {
+                if (!dic.ContainsKey(groupSizes[i]))
+                {
+                    List<int> tempList = new List<int>();
+                    tempList.Add(i);
+                    dic.Add(groupSizes[i], tempList);
+                }
+                else
+                {
+                    List<int> tempList = dic[groupSizes[i]];
+                    tempList.Add(i);
+                    dic[groupSizes[i]] = tempList;
+                }
+            }
+            int k = 0;
+            int j = 0;
+            foreach (int x in dic.Keys)
+            {
+                while (j < dic[x].Count)
+                {
+                    List<int> innerList = new List<int>();
+                    while (k < x)
+                    {
+                        innerList.Add(dic[x][j]);
+                        k = k + 1;
+                        j = j + 1;
+                    }
+                    ans.Add(innerList);
+                    k = 0;
+                }
+                j = 0;
+            }
+            return ans;
+        }
+    }
