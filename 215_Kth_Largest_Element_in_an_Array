@@ -1,0 +1,23 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            ClassLargestElement objClassLargestElement = new ClassLargestElement();
+            int[] arr = { 3, 2, 3, 1, 2, 4, 5, 5, 6 };
+            int ret = objClassLargestElement.FindKthLargest(arr, 4);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassLargestElement
+    {
+        public int FindKthLargest(int[] nums, int k)
+        {
+            List<int> numsList = new List<int>();
+            foreach (int x in nums)
+            {
+                numsList.Add(x);
+            }
+            numsList.Sort();
+            return numsList[numsList.Count - k];
+        }
+    }
