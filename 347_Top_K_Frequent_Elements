@@ -1,0 +1,47 @@
+//Difficulty: Medium
+        static void Main(string[] args)
+        {
+            ClassFrequenrElement objClassFrequenrElement = new ClassFrequenrElement();
+            int[] arr = { 1, 2 };
+            int[] ret = objClassFrequenrElement.TopKFrequent(arr, 2);
+            foreach (int val in ret)
+                Console.WriteLine(val);
+        }
+        
+            public class ClassFrequenrElement
+    {
+        public int[] TopKFrequent(int[] nums, int k)
+        {
+            int[] ans = new int[k];
+            List<int> numsList = new List<int>();
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+            foreach (int x in nums)
+            {
+                numsList.Add(x);
+            }
+            foreach (int y in numsList)
+            {
+                if (!dic.ContainsKey(y))
+                {
+                    int count = 1;
+                    dic.Add(y, 1);
+                }
+                else
+                {
+                    int count = dic[y];
+                    count = count + 1;
+                    dic[y] = count;
+                }
+            }
+            int z = 0;
+            foreach (var item in dic.OrderByDescending(key => key.Value))
+            {
+                if (z < k)
+                {
+                    ans[z] = item.Key;
+                    z = z + 1;
+                }
+            }
+            return ans;
+        }
+    }
