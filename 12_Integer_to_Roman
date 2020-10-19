@@ -1,0 +1,33 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            ClassToRoman objClassToRoman = new ClassToRoman();
+            int num = 120;
+            string ret = objClassToRoman.IntToRoman(num);
+            Console.WriteLine(ret);
+        }
+        
+            public class ClassToRoman
+    {
+        public string IntToRoman(int num)
+        {
+            num = 3;
+            string ans = "";
+            var dic = new Dictionary<int, string>() {
+            {1000,"M"},{900,"CM"},{500,"D"},{400,"CD"},{100,"C"},
+            {90,"XC"},{50,"L"},{40,"XL"},{10,"X"},
+            {9,"IX"},{5,"V"},{4,"IV"},{1,"I"}
+        };
+            dic.OrderByDescending(key => key.Key);
+            foreach (var pair in dic)
+            {
+                while (pair.Key <= num)
+                {
+                    ans = ans + pair.Value;
+                    num = num - pair.Key;
+                }
+            }
+            return ans;
+        }
+    }
