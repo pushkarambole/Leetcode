@@ -1,0 +1,37 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            ClassRotateImage objClassRotateImage = new ClassRotateImage();
+            int[] arr1D = { 1, 2, 3 };
+            int[,] arr2D = new int[3, 3];
+            //int[][] jaggedArr = new int[3][];
+            //jaggedArr[0] = new int[] { 1, 2, 3 };
+            //jaggedArr[1] = new int[] { 4, 5, 6 };
+            //jaggedArr[2] = new int[] { 7, 8, 9 };
+            int[][] jaggedArr = new int[2][];
+            jaggedArr[0] = new int[] { 1, 2 };
+            jaggedArr[1] = new int[] { 3, 4 };
+            int[][] jaggedArr2 = new int[3][];
+            jaggedArr2 = jaggedArr;
+            objClassRotateImage.Rotate(jaggedArr);
+        }
+        
+            public class ClassRotateImage
+    {
+        public void Rotate(int[][] matrix)
+        {
+            int length = matrix.Length;
+            for (int i = 0; i < length / 2; i++)
+            {
+                for (int j = i; j < length - 1 - i; j++)
+                {
+                    var temp = matrix[i][j];
+                    matrix[i][j] = matrix[length - 1 - j][i];
+                    matrix[length - 1 - j][i] = matrix[length - 1 - i][length - 1 - j];
+                    matrix[length - 1 - i][length - 1 - j] = matrix[j][length - 1 - i];
+                    matrix[j][length - 1 - i] = temp;
+                }
+            }
+        }
+    }
