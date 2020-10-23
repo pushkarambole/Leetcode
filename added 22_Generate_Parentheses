@@ -1,0 +1,35 @@
+//Difficulty: Medium
+
+        static void Main(string[] args)
+        {
+            ClassGenerateParanthesis objClassGenerateParanthesis = new ClassGenerateParanthesis();
+            IList<String> ret = objClassGenerateParanthesis.GenerateParenthesis(3);
+            foreach (string x in ret)
+            {
+                Console.WriteLine(x);
+            }
+        }
+        
+            public class ClassGenerateParanthesis
+    {
+        List<string> reqdList = new List<string>();
+        public IList<string> GenerateParenthesis(int n)
+        {
+            Recurse(n, n, "");
+            return reqdList;
+        }
+        public void Recurse(int left, int right, string reqdAns)
+        {
+            if (left < 0 || right < 0 || left > right)
+            {
+                return;
+            }
+            if (left == 0 && right == 0)
+            {
+                reqdList.Add(reqdAns);
+                return;
+            }
+            Recurse(left - 1, right, reqdAns + "(");
+            Recurse(left, right - 1, reqdAns + ")");
+        }
+    }
