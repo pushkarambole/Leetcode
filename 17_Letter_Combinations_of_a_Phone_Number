@@ -1,0 +1,58 @@
+//Difficulty: Medium
+
+static void Main(string[] args)
+        {
+            ClassLetterToPhone objClassLetterToPhone = new ClassLetterToPhone();
+            IList<String> ret = objClassLetterToPhone.LetterCombinations("23");
+            foreach (string x in ret)
+            {
+                Console.WriteLine(x);
+            }
+        }
+        
+            public class ClassLetterToPhone
+    {
+        Dictionary<int, List<char>> dict = new Dictionary<int, List<char>>() {
+                {2,new List<char> { 'a','b','c'} },
+                                {3,new List<char> { 'd','e','f'} },
+                                {4,new List<char> { 'g','h','i'} },
+                                {5,new List<char> { 'j','k','l'} },
+                                {6,new List<char> { 'm','n','o'} },
+                                {7,new List<char> { 'p','q','r','s'} },
+                                {8,new List<char> { 't','u','v'} },
+                                {9,new List<char> { 'w','x','y','z'} }
+            };
+        List<int> digitsList = new List<int>();
+        public IList<string> LetterCombinations(string digits)
+        {
+            List<string> reqdList = new List<string>();
+            if (digits == "")
+            {
+                return reqdList;
+            }
+            int num = Convert.ToInt32(digits);
+            while (num > 0)
+            {
+                int d = num % 10;
+                digitsList.Add(d);
+                num = num / 10;
+            }
+            digitsList.Reverse();
+            reqdList.Add("");
+            for (int i = 0; i < digitsList.Count; i++)
+            {
+                List<string> generatedResult = new List<string>();
+                List<char> retrievedListCharFirst = new List<char>();
+                retrievedListCharFirst = dict[digitsList[i]];
+                foreach (char x in retrievedListCharFirst)
+                {
+                    foreach (string y in reqdList)
+                    {
+                        generatedResult.Add(y + x);
+                    }
+                }
+                reqdList = generatedResult;
+            }
+            return reqdList;
+        }
+    }
